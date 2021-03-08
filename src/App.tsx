@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchQuizQuestions } from "./API";
 // Components
 import QuestionCard from "./components/QuestionCard";
@@ -6,6 +6,8 @@ import QuestionCard from "./components/QuestionCard";
 import { QuestionState, Difficulty } from "./API";
 // Styles
 import { GlobalStyle, Wrapper } from "./App.styles";
+
+
 
 export type AnswerObject = {
     question: string;
@@ -17,6 +19,10 @@ export type AnswerObject = {
 const TOTAL_QUESTIONS = 10;
 
 function App() {
+    useEffect(() => {
+        document.title = 'React Typescript Quiz'
+    }, [])
+
     const [loading, setLoading] = useState(false);
     const [questions, setQuestions] = useState<QuestionState[]>([]);
     const [number, setNumber] = useState(0);
